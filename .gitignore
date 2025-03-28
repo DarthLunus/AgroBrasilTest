@@ -1,0 +1,31 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.db
+
+# Virtual environment
+.venv/
+env/
+venv/
+
+# Docker files
+car_insurance.db
+*.log
+
+# IDE/Editor config
+.idea/
+.vscode/
+
+# FastAPI specific
+*.env
+
+# Test output
+*.coveragerc
+.coverage
+*.log
+
+# system files
+.DS_Store
+Thumbs.db

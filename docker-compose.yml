@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./car_insurance.db:/app/car_insurance.db  # Persistência do banco de dados
+    command: uvicorn main:app --host 0.0.0.0 --port 8000  # Comando para rodar o FastAPI
+    networks:
+      - app_network
+
+# Se você precisar de um banco de dados separado (exemplo com PostgreSQL), adicione um serviço:
+# db:
+#   image: postgres:latest
+#   environment:
+#     POSTGRES_DB: car_insurance
+#     POSTGRES_USER: user
+#     POSTGRES_PASSWORD: password
+#   volumes:
+#     - db_data:/var/lib/postgresql/data
+#   networks:
+#     - app_network
+
+# Definir redes para isolar os serviços, caso necessário
+networks:
+  app_network:
+    driver: bridge
+
+# Volumes para persistência de dados (caso use banco de dados separado)
+# volumes:
+#   db_data:
